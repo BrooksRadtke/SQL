@@ -11,22 +11,13 @@ director_name VARCHAR(50) NOT NULL,
 director_movie VARCHAR(50) NOT NULL);
 
 INSERT INTO tbl_directors
-	(director_name)
+	(director_name, director_movie)
 	VALUES
-	('Steven Spielberg'),
-	('George Lucas'),
-	('Alfred Hitchcock'),
-	('Sam Mendez'),
-	('Christopher Nolan');
-
-INSERT INTO tbl_directors
-	(director_movie)
-	VALUES
-	('Jurassic World'),
-	('Star Wars'),
-	('Psycho'),
-	('Skyfall'),
-	('Inception');
+	('Steven Spielberg', 'Jurassic World'),
+	('George Lucas', 'Star Wars'),
+	('Alfred Hitchcock', 'Psycho'),
+	('Sam Mendez', 'Skyfall'),
+	('Christopher Nolan', 'Inception');
 
 SELECT * FROM tbl_directors;
 
@@ -36,22 +27,13 @@ composer_name VARCHAR(50) NOT NULL,
 composer_movie VARCHAR(50) NOT NULL);
 
 INSERT INTO tbl_composers
-	(composer_name)
+	(composer_name, composer_movie)
 	VALUES
-	('John Williams'),
-	('Bernard Hermann'),
-	('Thomas Newman'),
-	('Hans Zimmer'),
-	('Michael Giaccino');
-
-INSERT INTO tbl_composers
-	(composer_movie)
-	VALUES
-	('Star Wars'),
-	('Psycho'),
-	('Skyfall'),
-	('Inception'),
-	('Jurrasic World');
+	('John Williams', 'Star Wars'),
+	('Bernard Hermann', 'Psycho'),
+	('Thomas Newman', 'Skyfall'),
+	('Hans Zimmer', 'Inception'),
+	('Michael Giaccino', 'Jurrasic World');
 
 SELECT * FROM tbl_composers;
 

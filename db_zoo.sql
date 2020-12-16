@@ -7,7 +7,7 @@ USE db_zoo */
 /* CREATE DATABASE db_zoo_v2
 GO */
 
-/*USE db_zoo; 
+USE db_zoo; 
 
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES tbl_species)
 	DROP TABLE tbl_species, tbl_animalia, tbl_care, tbl_class, tbl_habitat, tbl_nutrition, tbl_order, tbl_specialist; */
@@ -199,7 +199,7 @@ SELECT * FROM tbl_habitat;
 /* Assignment 2 - 249*/
 SELECT species_name
 FROM tbl_species
-WHERE species_order = 3;
+WHERE species_id = 3;
 
 /* Assignment 3 - 250*/
 SELECT nutrition_type
@@ -208,15 +208,22 @@ WHERE nutrition_cost <=600.00;
 
 /* Assignment 4 - 251*/
 SELECT species_name, nutrition_id
-FROM tbl_species, tbl_nutrition
+FROM tbl_species
+INNER JOIN tbl_nutrition on tbl_species.species_nutrition = tbl_nutrition.nutrition_id
 WHERE nutrition_id BETWEEN 2202 AND 2206;
 
 /* Assignment 5 - 252*/
 SELECT species_name AS "Species Name:", nutrition_type AS "Nutrition Type:"
-FROM tbl_species, tbl_nutrition;
+FROM tbl_species
+INNER JOIN tbl_nutrition ON tbl_species.species_name = tbl_nutrition.nutrition_type;
 
 /* Assignment 6 - 253, NEEDS REVISION*/
-SELECT specialist_fname, specialist_lname, specialist_contact, 
+SELECT specialist_fname, specialist_lname, specialist_contact 
 FROM tbl_specialist
-INNER JOIN tbl_species ON species_name = specialist_id.species_care
+INNER JOIN tbl_care ON tbl_care.care_specialist = tbl_specialist.specialist_id
+INNER JOIN tbl_species ON tbl_species.species_care = tbl_species.species_care
 WHERE species_name = 'penguin';
+
+SELECT * FROM tbl_specialist
+SELECT * FROM tbl_care
+SELECT * FROM tbl_species

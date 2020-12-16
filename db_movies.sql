@@ -35,5 +35,10 @@ INSERT INTO tbl_composers
 	('Hans Zimmer', 'Inception'),
 	('Michael Giaccino', 'Jurrasic World');
 
+SELECT * FROM tbl_directors
 SELECT * FROM tbl_composers;
 
+SELECT director_name AS "Director:", composer_name AS "Composer:"
+FROM tbl_directors
+INNER JOIN tbl_composers ON tbl_directors.director_movie = tbl_composers.composer_movie
+WHERE director_movie = 'Star Wars';

@@ -1,0 +1,4 @@
+CREATE SCHEMA [ACADEMY-HR] AUTHORIZATION [dbo]
+--Navigate to Security>Schemas to view
+
+DROP SCHEMA IF EXISTS [ACADEMY-HR]

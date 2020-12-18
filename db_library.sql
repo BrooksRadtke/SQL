@@ -207,7 +207,9 @@ BEGIN
 	SELECT "Name"
 	FROM tbl_BORROWER
 	INNER JOIN tbl_BOOK_LOANS ON tbl_BOOK_LOANS.CardNo = tbl_BORROWER.CardNo
-	WHERE NOT DateOut = '12/13/2020';
+	--WHERE NOT DateOut = '12/13/2020';						--Either WHERE operator returns values
+	--WHERE NOT EXISTS
+	--(SELECT CardNo FROM tbl_BOOK_LOANS WHERE tbl_BOOK_LOANS.DateDue = '12/13/20');
 END
 
 SELECT * FROM tbl_BOOK_AUTHORS

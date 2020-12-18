@@ -43,12 +43,28 @@ INSERT INTO tbl_instructors
 
 --step 9
 UPDATE tbl_students
-SET STUDENT_NAME = 'Sean C'
-WHERE CLASS_ID = 100;
+SET CLASS_ID = 101
+WHERE STUDENT_NAME = 'Ted T';
+
+--Step 10
+UPDATE tbl_students
+SET INSTRUCTOR_ID = 1001
+WHERE STUDENT_NAME = 'Josh W';
+
+--step 11
+SELECT INSTRUCTOR_NAME FROM tbl_instructors;
+
+--step 12
+SELECT STUDENT_NAME
+FROM tbl_students
+ORDER BY STUDENT_NAME ASC;
+
+--step 13
+SELECT tbl_classes.CLASS_NAME, tbl_students.STUDENT_NAME, tbl_instructors.INSTRUCTOR_NAME
+FROM tbl_classes
+INNER JOIN tbl_students ON tbl_classes.CLASS_ID = tbl_students.CLASS_ID
+INNER JOIN tbl_instructors ON tbl_students.INSTRUCTOR_ID = tbl_instructors.INSTRUCTOR_ID;
 
 SELECT * FROM tbl_students
 SELECT * FROM tbl_classes
-
-UPDATE tbl_students
-SET STUDENT_NAME = 'Sean C'
-WHERE INSTRUCTOR_ID = 'Erik Gross';
+SELECT * FROM tbl_instructors

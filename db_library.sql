@@ -170,26 +170,44 @@ END
 --Executable Query
 EXEC [dbo].[getBooksAndAuthors]
 
---Create query that returns number of copies of "The Lost Tribe" at Library Branch "Sharpstown"
---HOW DO I TARGET TITLE **AND** BRANCHNAME???
+--Create query that returns number of copies of "The Lost Tribe" at Library Branch "Sharpstown" (There are none...)
 CREATE PROC getBookCopiesAtBranch
 AS
 BEGIN
-	SELECT Number_of_Copies, tbl_LIBRARY_BRANCH.BranchName
-	FROM tbl_BOOK_COPIES
-	INNER JOIN tbl_BOOKS ON tbl_BOOK_COPIES.Book_ID = tbl_BOOKS.Book_ID
-	INNER JOIN tbl_LIBRARY_BRANCH ON tbl_LIBRARY_BRANCH.Branch_ID = tbl_BOOK_COPIES.Branch_ID
-	WHERE Title = 'The Lost Tribe';
+	SELECT Title, Number_of_Copies, tbl_LIBRARY_BRANCH.BranchName
+	FROM tbl_LIBRARY_BRANCH
+	INNER JOIN tbl_BOOK_COPIES ON tbl_BOOK_COPIES.Branch_ID = tbl_LIBRARY_BRANCH.Branch_ID
+	INNER JOIN tbl_BOOKS ON tbl_BOOKS.Book_ID = tbl_BOOK_COPIES.Book_ID
+	WHERE BranchName = 'Sharpstown';
 END
 
---Create query that returns number of copies of "The Lost Tribe" that are owned by each Library Branch
+--Executable Query
+EXEC [dbo].[getBookCopiesAtBranch]
+
+--Create query that returns number of copies of "The Lost Tribe" that are owned by each Library Branch 
+--(only one branch has copies)
 CREATE PROC getBookByBranch
 AS
 BEGIN
-	
+	SELECT Title, Number_of_Copies, tbl_LIBRARY_BRANCH.BranchName
+	FROM tbl_LIBRARY_BRANCH
+	INNER JOIN tbl_BOOK_COPIES ON tbl_BOOK_COPIES.Branch_ID = tbl_LIBRARY_BRANCH.Branch_ID
+	INNER JOIN tbl_BOOKS ON tbl_BOOKS.Book_ID = tbl_BOOK_COPIES.Book_ID
+	WHERE Title = 'The Lost Tribe';
 END
 
+--Executable Query
+EXEC [dbo].[getBookByBranch]
+
 --Create query that returns number of borrowers who do not have any books checked out
+CREATE PROC getBorrowers
+AS
+BEGIN
+	SELECT "Name"
+	FROM tbl_BORROWER
+	INNER JOIN tbl_BOOK_LOANS ON tbl_BOOK_LOANS.CardNo = tbl_BORROWER.CardNo
+	WHERE DateOut = '12/13/2020';
+END
 
 SELECT * FROM tbl_BOOK_AUTHORS
 SELECT * FROM tbl_BOOK_COPIES

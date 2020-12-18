@@ -175,7 +175,7 @@ EXEC [dbo].[getBooksAndAuthors]
 CREATE PROC getBookCopiesAtBranch
 AS
 BEGIN
-	SELECT Number_of_Copies
+	SELECT Number_of_Copies, tbl_LIBRARY_BRANCH.BranchName
 	FROM tbl_BOOK_COPIES
 	INNER JOIN tbl_BOOKS ON tbl_BOOK_COPIES.Book_ID = tbl_BOOKS.Book_ID
 	INNER JOIN tbl_LIBRARY_BRANCH ON tbl_LIBRARY_BRANCH.Branch_ID = tbl_BOOK_COPIES.Branch_ID

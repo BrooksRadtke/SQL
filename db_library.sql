@@ -200,13 +200,14 @@ END
 EXEC [dbo].[getBookByBranch]
 
 --Create query that returns number of borrowers who do not have any books checked out
+--Searches by specific date, returns names of borrowers
 CREATE PROC getBorrowers
 AS
 BEGIN
 	SELECT "Name"
 	FROM tbl_BORROWER
 	INNER JOIN tbl_BOOK_LOANS ON tbl_BOOK_LOANS.CardNo = tbl_BORROWER.CardNo
-	WHERE DateOut = '12/13/2020';
+	WHERE NOT DateOut = '12/13/2020';
 END
 
 SELECT * FROM tbl_BOOK_AUTHORS
